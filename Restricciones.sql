@@ -1,3 +1,50 @@
+--Comensal
+ALTER TABLE comensal ADD CONSTRAINT pk_id_comensal PRIMARY KEY(id_comensal);
+
+--Datos comensal
+ALTER TABLE datos_comensal ADD CONSTRAINT fk_id_comensal FOREIGN KEY (id_comensal) REFERENCES comensal(id_comensal);
+
+--Pedido
+ALTER TABLE pedido ADD CONSTRAINT pk_no_pedido PRIMARY KEY(no_pedido);
+ALTER TABLE pedido ADD CONSTRAINT fk_id_comensal_1 FOREIGN KEY (id_comensal) REFERENCES comensal(id_comensal);
+
+--Mesa
+ALTER TABLE mesa ADD CONSTRAINT pk_id_mesa PRIMARY KEY(id_mesa);
+ALTER TABLE mesa ADD CONSTRAINT fk_id_comensal_2 FOREIGN KEY (id_comensal) REFERENCES comensal(id_comensal);
+
+--Producto
+ALTER TABLE producto ADD CONSTRAINT pk_id_producto PRIMARY KEY(id_producto);
+
+--Contener
+ALTER TABLE contener ADD CONSTRAINT fk_no_pedido_1 FOREIGN KEY (no_pedido) REFERENCES pedido(no_pedido);
+ALTER TABLE contener ADD CONSTRAINT fk_id_producto FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+
+--Categoria Producto
+ALTER TABLE categoria_producto ADD CONSTRAINT fk_id_producto_1 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+
+--Ingrediente
+ALTER TABLE ingrediente ADD CONSTRAINT pk_nombre_ingrediente PRIMARY KEY(nombre_ingrediente);
+
+--Participar
+ALTER TABLE participar ADD CONSTRAINT fk_nom_ingre FOREIGN KEY (nombre_ingrediente) REFERENCES ingrediente(nombre_ingrediente);
+ALTER TABLE participar ADD CONSTRAINT fk_id_producto_2 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+
+--Consumir
+ALTER TABLE consumir ADD CONSTRAINT fk_id_comensal3 FOREIGN KEY (id_comensal) REFERENCES comensal(id_comensal);
+ALTER TABLE consumir ADD CONSTRAINT fk_no_pedido_c FOREIGN KEY (no_pedido) REFERENCES contener(no_pedido);
+
+--Salsa
+ALTER TABLE salsa ADD CONSTRAINT pk_id_salsa PRIMARY KEY(salsa);
+ALTER TABLE salsa ADD CONSTRAINT fk_id_producto_4 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+
+--Presentacion salsa
+ALTER TABLE salsa ADD CONSTRAINT fk_id_producto_5 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+
+--Emparejar
+ALTER TABLE emparejar ADD CONSTRAINT fk_id_salsa FOREIGN KEY (id_salsa) REFERENCES producto(id_salsa);
+ALTER TABLE emparejar ADD CONSTRAINT fk_id_producto_6 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+
+
 --Restricciones Parte Quiños
 
 -- Restricciones Sucursal
@@ -25,6 +72,11 @@ ALTER TABLE licencia ADD CONSTRAINT pk_codigo PRIMARY KEY(codigo);
 ALTER TABLE licencia_repartidor ADD CONSTRAINT fk_codigo FOREIGN KEY (codigo) REFERENCES licencia(codigo);
 ALTER TABLE licencia_repartidor ADD CONSTRAINT fk_curps FOREIGN KEY (curp) REFERENCES empleados(curp);
 ALTER TABLE datos_licencia ADD CONSTRAINT fk_codigo1 FOREIGN KEY (codigo) REFERENCES licencia(codigo);
+
+--Licencia
+ALTER TABLE repartidor ADD CONSTRAINT fk_curp_rep FOREIGN KEY (curp) REFERENCES empleado(curp);
+ALTER TABLE repartidor ADD CONSTRAINT fk_codigo FOREIGN KEY (codigo) REFERENCES licencia(codigo);
+
 
 --Proveedor
 ALTER TABLE proveedor ADD CONSTRAINT pk_rfc1 PRIMARY KEY(rfc);
