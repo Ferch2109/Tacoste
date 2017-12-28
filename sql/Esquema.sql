@@ -102,7 +102,7 @@ CREATE TABLE etiqueta_producto (
 
 CREATE TABLE salsa (
     id_producto VARCHAR(20),
-    id_salsa VARCHAR(20)
+    id_salsa VARCHAR(20),
     nombre VARCHAR(20),
     nivel_picor INTEGER
 );
@@ -118,7 +118,7 @@ CREATE TABLE presentacion_salsa (
 
 CREATE TABLE emparejar (
     id_salsa VARCHAR(20),
-    id_producto VARCHAR (20),
+    id_producto VARCHAR (20)
     
 );
 
