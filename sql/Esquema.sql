@@ -96,7 +96,7 @@ CREATE TABLE etiqueta_producto (
     
 );
 
-ALTER TABLE etiqueta_producto ADD CONSTRAINT fk_id_producto_3 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+
 
 
 
@@ -158,7 +158,6 @@ CREATE TABLE telefono_sucursal (
     telefono INTEGER
 );
 
-drop table gerencia_sucursal;
 
 CREATE TABLE empleado (
     curp VARCHAR(25) NOT NULL,
