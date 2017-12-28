@@ -15,6 +15,9 @@ ALTER TABLE mesa ADD CONSTRAINT fk_id_comensal_2 FOREIGN KEY (id_comensal) REFER
 --Producto
 ALTER TABLE producto ADD CONSTRAINT pk_id_producto PRIMARY KEY(id_producto);
 
+--Etiqueta producto
+ALTER TABLE etiqueta_producto ADD CONSTRAINT fk_id_producto_3 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+
 --Contener
 ALTER TABLE contener ADD CONSTRAINT fk_no_pedido_1 FOREIGN KEY (no_pedido) REFERENCES pedido(no_pedido);
 ALTER TABLE contener ADD CONSTRAINT fk_id_producto FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
