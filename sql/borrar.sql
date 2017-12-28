@@ -30,7 +30,7 @@ DROP TABLE identificacion_proveedor;
 DROP TABLE datos_proveedor;
 DROP TABLE suministro;
 DROP TABLE nombre_suministro;
-DROP TABLE datos suministro;
+DROP TABLE datos_suministro;
 DROP TABLE inventario;
 DROP TABLE suministrar;
 DROP TABLE generar;
