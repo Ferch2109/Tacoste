@@ -1,0 +1,129 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1in]{geometry}
+ 
+\usepackage{listings}
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{
+style=mystyle,
+literate={á}{{\'a}}1
+        {ã}{{\~a}}1
+        {é}{{\'e}}1
+        {ó}{{\'o}}1
+        {í}{{\'i}}1
+        {ñ}{{\~n}}1
+        {¡}{{!`}}1
+        {¿}{{?`}}1
+        {ú}{{\'u}}1
+        {Í}{{\'I}}1
+        {Ó}{{\'O}}1
+}
+
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{commath}
+
+\begin{document}
+
+\title{\vspace{-1.5cm}
+    Proyecto Final\\
+    Tacoste\\
+    \large Universidad Nacional Autónoma de México\\
+    Facultad de Ciencias\\
+    Fundamentos de Bases de Datos\\}
+\author{
+	Ángel Iván Gladín García\\
+    No. cuenta: 313112470\\
+    \texttt{angelgladin@ciencias.unam.mx}
+    \and
+    Marco Antonio Hurtado Gutierrez\\
+    No. cuenta: 313110902\\
+    \texttt{markhg@ciencias.unam.mx}
+    \and
+    Luis Fernando Yang Fong Baeza\\
+    No. cuenta: 313320679\\
+    \texttt{fernandofong@ciencias.unam.mx}
+    \and
+    María Fernanda González Chávez\\
+    No. cuenta: 313036367\\
+    \texttt{fernandagch@ciencias.unam.mx}
+}
+\date{10 de enero de 2018}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Modelo Entidad Relación}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+El objetivo de este modelo es representar de manera grafica la estructura lógica de una base de datos y en este documento se explicara de manera breve como se modelo y porque se modelo de esta manera.
+
+
+\begin{itemize}
+
+\item Se tiene la entidad sucursal para que podamos guardar a detalle la informacion de cada una de las sucursales, empezando por un identificador            para cada sucursal  su direccion completa y que empleado es el que dirige esta sucursal entonces tenemos toda la informacion relevante.
+
+\item Tenemos la entidad Persona que a su vez tiene dos entidades hijas que son Comensal y Empleado que contiene los datos pertinentes para modelar a       cada una de la mejor manera.
+
+\item Tenemos en la entidad Empleado que se relaciona con la entidad Sucursal a traves de la relacion Trabajar, donde indicamos a que sucursal pertenece cada empleado. Tambien tenemos dos relaciones adicionales: una indica que cada sucursal tiene alguien que la supervisa, y la otra que cada empleado es supervisado por otro (el gerente de la sucursal).
+
+\item La relacion ordenar esta ligada a la entidad comensal y a la entidad pedido para que pueda ordenar lo que el comnesal apetezca.  
+
+\item Un grupo de comensales tienen una mesa donde cada mesa tiene un identificador y ademas cuando los comensales consumen algun producto al final se les entrega un ticket. Se hace le hace el cargo de la cuenta a un solo comensal de la mesa.
+
+\item A cada platillo (producto) se le asocia una salsa. A su vez la salsa tiene una presentacion y nivel de picor.
+
+\item Tambien es importante indicar los ingredientes que se necesitan para la elaboracion de los platillos.
+
+\item Modelamos el registro historico  de los precios y productos ya que nos interesa saber si puede haber una promocion. Posteriormente en la                 base se utilizaran disparadores.
+
+\item Tambien esta la entidad Provedor donde guardamos los datos de los provedores para saber quien suministra a cada sucursal. Con esto obtenemos un  inventario para cada sucursal,        
+
+\item Es importante mencionar que la entidad empleado tiene una entidad hija llamada repartidor la cual es una entidad debil debido a que no tiene llave primaria. Cada repartidor tiene un medio de transporte. Y cada repartidor va a contar con su licencia para poder circular para que no existan problemas legales y esto implica que cada repartidor debe ser mayor de edad.
+
+\end{itemize}
+
+
+
+
+%Sucursal - Contener.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{thebibliography}{}
+%\bibitem{} 
+%Google\\
+%\url{https://www.google.com.mx/}
+
+%\end{thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
