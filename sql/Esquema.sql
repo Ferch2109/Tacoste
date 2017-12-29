@@ -136,7 +136,8 @@ CREATE TABLE empleado (
     paterno VARCHAR(25) NOT NULL,
     materno VARCHAR(25) NOT NULL,
     nombre VARCHAR(25) NOT NULL,
-    fecha_ingreso DATE
+    fecha_ingreso DATE, 
+    sueldo INTEGER
 );
 
 CREATE TABLE datos_empleado (
