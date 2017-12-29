@@ -15,15 +15,12 @@ ALTER TABLE mesa ADD CONSTRAINT fk_id_comensal_2 FOREIGN KEY (id_comensal) REFER
 --Producto
 ALTER TABLE producto ADD CONSTRAINT pk_id_producto PRIMARY KEY(id_producto);
 
---Etiqueta producto
-ALTER TABLE etiqueta_producto ADD CONSTRAINT fk_id_producto_3 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
-
 --Contener
 ALTER TABLE contener ADD CONSTRAINT fk_no_pedido_1 FOREIGN KEY (no_pedido) REFERENCES pedido(no_pedido);
 ALTER TABLE contener ADD CONSTRAINT fk_id_producto FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
 
 --Categoria Producto
-ALTER TABLE categoria_producto ADD CONSTRAINT fk_id_producto_1 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+ALTER TABLE categoria_producto ADD CONSTRAINT fk_id_producto_c FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
 
 --Ingrediente
 ALTER TABLE ingrediente ADD CONSTRAINT pk_nombre_ingrediente PRIMARY KEY(nombre_ingrediente);
@@ -33,22 +30,33 @@ ALTER TABLE participar ADD CONSTRAINT fk_nom_ingre FOREIGN KEY (nombre_ingredien
 ALTER TABLE participar ADD CONSTRAINT fk_id_producto_2 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
 
 --Consumir
-ALTER TABLE consumir ADD CONSTRAINT fk_id_comensal3 FOREIGN KEY (id_comensal) REFERENCES comensal(id_comensal);
-ALTER TABLE consumir ADD CONSTRAINT fk_no_pedido_c FOREIGN KEY (no_pedido) REFERENCES contener(no_pedido);
+ALTER TABLE consumir ADD CONSTRAINT fk_id_comensal_D FOREIGN KEY (id_comensal) REFERENCES comensal(id_comensal);
+ALTER TABLE consumir ADD CONSTRAINT fk_no_pedido5 FOREIGN KEY (no_pedido) REFERENCES pedido(no_pedido);
 
+--etiqueta producto
+ALTER TABLE etiqueta_producto ADD CONSTRAINT fk_id_producto_e FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
 --Salsa
-ALTER TABLE salsa ADD CONSTRAINT pk_id_salsa PRIMARY KEY(salsa);
+ALTER TABLE salsa ADD CONSTRAINT pk_id_salsa PRIMARY KEY(id_salsa);
 ALTER TABLE salsa ADD CONSTRAINT fk_id_producto_4 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
 
 --Presentacion salsa
-ALTER TABLE salsa ADD CONSTRAINT fk_id_producto_5 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
+ALTER TABLE presentacion_salsa ADD CONSTRAINT fk_id_producto_5 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
 
 --Emparejar
-ALTER TABLE emparejar ADD CONSTRAINT fk_id_salsa FOREIGN KEY (id_salsa) REFERENCES producto(id_salsa);
+ALTER TABLE emparejar ADD CONSTRAINT fk_id_salsa FOREIGN KEY (id_salsa) REFERENCES salsa(id_salsa);
 ALTER TABLE emparejar ADD CONSTRAINT fk_id_producto_6 FOREIGN KEY (id_producto) REFERENCES producto(id_producto);
 
 
 --Restricciones Parte Quiños
+
+--Empleado
+
+ALTER TABLE empleado ADD CONSTRAINT pk_curp PRIMARY KEY(curp);
+ALTER TABLE datos_empleado ADD CONSTRAINT fk_curp1 FOREIGN KEY (curp) REFERENCES empleado(curp);
+ALTER TABLE correo_empleado ADD CONSTRAINT fk_curp2 FOREIGN KEY (curp) REFERENCES empleado(curp);
+ALTER TABLE telefono_empleado ADD CONSTRAINT fk_curp3 FOREIGN KEY (curp) REFERENCES empleado(curp);
+ALTER TABLE supervisar ADD CONSTRAINT fk_curp4 FOREIGN KEY (curp) REFERENCES empleado(curp);
+
 
 -- Restricciones Sucursal
 
@@ -58,27 +66,16 @@ ALTER TABLE gerencia_sucursal ADD CONSTRAINT fk_curp FOREIGN KEY (curp) REFERENC
 ALTER TABLE informacion_sucursal ADD CONSTRAINT fk_id_sucursal1 FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal);
 ALTER TABLE telefono_sucursal ADD CONSTRAINT fk_id_sucursal2 FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal);
 
---Empleado
-
-ALTER TABLE empleado ADD CONSTRAINT pk_curp PRIMARY KEY(curp);
-ALTER TABLE datos_empleado ADD CONSTRAINT fk_curp1 FOREIGN KEY (curp) REFERENCES empleado(curp);
-ALTER TABLE correo_empleado ADD CONSTRAINT fk_curp2 FOREIGN KEY (curp) REFERENCES empleado(curp);
-ALTER TABLE telefono_empleado ADD CONSTRAINT fk_curp3 FOREIGN KEY (curp) REFERENCES empleado(curp);
-ALTER TABLE supervisar2 ADD CONSTRAINT fk_curp4 FOREIGN KEY (curp) REFERENCES empleado(curp);
-
---Supervisar
-ALTER TABLE supervisar ADD CONSTRAINT fk_curp_4 FOREIGN KEY (curp) REFERENCES empleado(curp);
-
 
 --Licencia
 ALTER TABLE licencia ADD CONSTRAINT pk_codigo PRIMARY KEY(codigo);
 ALTER TABLE licencia_repartidor ADD CONSTRAINT fk_codigo FOREIGN KEY (codigo) REFERENCES licencia(codigo);
-ALTER TABLE licencia_repartidor ADD CONSTRAINT fk_curps FOREIGN KEY (curp) REFERENCES empleados(curp);
+ALTER TABLE licencia_repartidor ADD CONSTRAINT fk_curps FOREIGN KEY (curp) REFERENCES empleado(curp);
 ALTER TABLE datos_licencia ADD CONSTRAINT fk_codigo1 FOREIGN KEY (codigo) REFERENCES licencia(codigo);
 
 --Licencia
 ALTER TABLE repartidor ADD CONSTRAINT fk_curp_rep FOREIGN KEY (curp) REFERENCES empleado(curp);
-ALTER TABLE repartidor ADD CONSTRAINT fk_codigo FOREIGN KEY (codigo) REFERENCES licencia(codigo);
+ALTER TABLE repartidor ADD CONSTRAINT fk_codigo_1 FOREIGN KEY (codigo) REFERENCES licencia(codigo);
 
 
 --Proveedor

@@ -83,7 +83,7 @@ CREATE TABLE participar(
 
 CREATE TABLE consumir (
     id_comensal VARCHAR(20),
-    id_pedido VARCHAR(20),
+    no_pedido INTEGER,
     ticket INTEGER
     
 );
@@ -129,35 +129,6 @@ CREATE TABLE emparejar (
 
 --Tablas Quiños
 
-CREATE TABLE sucursal (
-    id_sucursal INTEGER
-    
-    
-);
-
-CREATE TABLE gerencia_sucursal (
-    id_sucursal INTEGER,
-    curp VARCHAR(25)
-    
-);
-
-CREATE TABLE informacion_sucursal (
-    id_sucursal INTEGER,
-    estado VARCHAR(25) NOT NULL,
-    municipio VARCHAR(25) NOT NULL,
-    colonia VARCHAR(25) NOT NULL,
-    cp INTEGER,
-    calle  VARCHAR(25) NOT NULL,
-    numero INTEGER,
-    hora_inicio INTEGER,
-    hora_cierre INTEGER
-);
-
-CREATE TABLE telefono_sucursal (
-    id_sucursal INTEGER,
-    telefono INTEGER
-);
-
 
 CREATE TABLE empleado (
     curp VARCHAR(25) NOT NULL,
@@ -187,6 +158,35 @@ CREATE TABLE telefono_empleado (
     telefono_empleado INTEGER
 );
 
+CREATE TABLE sucursal (
+    id_sucursal INTEGER
+    
+    
+);
+
+CREATE TABLE gerencia_sucursal (
+    id_sucursal INTEGER,
+    curp VARCHAR(25) NOT NULL
+    
+);
+
+CREATE TABLE informacion_sucursal (
+    id_sucursal INTEGER,
+    estado VARCHAR(25) NOT NULL,
+    municipio VARCHAR(25) NOT NULL,
+    colonia VARCHAR(25) NOT NULL,
+    cp INTEGER,
+    calle  VARCHAR(25) NOT NULL,
+    numero INTEGER,
+    hora_inicio INTEGER,
+    hora_cierre INTEGER
+);
+
+CREATE TABLE telefono_sucursal (
+    id_sucursal INTEGER,
+    telefono INTEGER
+);
+
 CREATE TABLE supervisar (
     curp VARCHAR(25)NOT NULL
 );
@@ -210,7 +210,7 @@ CREATE TABLE datos_licencia (
 );
 
 CREATE TABLE repartidor (
-    curp INTEGER,
+    curp VARCHAR(25),
     codigo INTEGER
 );
 
