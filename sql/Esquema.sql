@@ -29,8 +29,8 @@ CREATE TABLE pedido(
     no_pedido INTEGER,
     id_comensal VARCHAR(20),
     fecha DATE,
-    forma_pago VARCHAR(20)
-    
+    forma_pago VARCHAR(20),
+    total INTEGER
 );
 
 
@@ -135,7 +135,9 @@ CREATE TABLE empleado (
     rfc VARCHAR (25)NOT NULL,
     paterno VARCHAR(25) NOT NULL,
     materno VARCHAR(25) NOT NULL,
-    nombre VARCHAR(25) NOT NULL
+    nombre VARCHAR(25) NOT NULL,
+    fecha_ingreso DATE, 
+    sueldo INTEGER
 );
 
 CREATE TABLE datos_empleado (
