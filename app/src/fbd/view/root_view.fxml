@@ -21,28 +21,17 @@
    <top>
       <MenuBar minWidth="800.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <menus>
-            <Menu disable="true" mnemonicParsing="false" styleClass="background_text" text="Tacoste">
+            <Menu mnemonicParsing="false" styleClass="background_text" text="Tacoste">
                <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open…" />
-                  <Menu mnemonicParsing="false" text="Open Recent" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save As…" />
-                  <MenuItem mnemonicParsing="false" text="Revert" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Preferences…" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quit" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchTaqueriasSection" text="Sucursales" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchEmployeesSection" text="Empleados" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchClientsSection" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchProductsSection" text="Productos" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchProvidersSection" text="Provedores" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchGenerateReport" text="Reportes" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" onAction="#launchTaqueriasSection" text="Sucursales" />
-            <Menu mnemonicParsing="false" onAction="#launchEmployeesSection" text="Empleados" />
-            <Menu mnemonicParsing="false" onAction="#launchClientsSection" text="Clientes" />
-            <Menu mnemonicParsing="false" onAction="#launchProductsSection" text="Productos" />
-            <Menu mnemonicParsing="false" onAction="#launchProvidersSection" text="Provedores" />
-            <Menu mnemonicParsing="false" onAction="#launchGenerateReport" text="Reportes" />
+
          </menus>
       </MenuBar>
    </top>
