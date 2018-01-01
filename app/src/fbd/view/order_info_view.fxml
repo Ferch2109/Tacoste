@@ -80,7 +80,7 @@
                     <children>
                         <AnchorPane prefHeight="23.0" prefWidth="129.0"/>
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="23.0"
-                                prefWidth="124.0" text="Generar Pedido" textAlignment="CENTER">
+                                prefWidth="124.0" onAction="#generateOrder" text="Generar Pedido" textAlignment="CENTER">
                             <font>
                                 <Font name="Century Gothic" size="12.0"/>
                             </font>

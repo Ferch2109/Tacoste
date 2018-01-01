@@ -1,10 +1,12 @@
 package fbd.controller;
 
+import fbd.model.OrderInfo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -67,12 +69,11 @@ public class RootController {
     }
 
     @FXML private void orderProductsFromOrderList() throws  IOException{
-        //FIXME no sirve
-        FXMLLoader loader = FXMLLoader.load(getClass().getResource("/fbd/view/order_info_view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fbd/view/order_info_view.fxml"));
         Parent root = loader.load();
 
-        OrderInfoController controller = loader.getController();
-        controller.setData(new OrderInfoController());
+        loader.<OrderInfoController>getController().setData(new OrderInfo());
+
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.showAndWait();
