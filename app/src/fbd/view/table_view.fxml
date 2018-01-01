@@ -18,7 +18,7 @@
                 </TableView>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="74.0" text="Agregar"/>
+                        <Button mnemonicParsing="false" prefHeight="27.0" onAction="#addProductByLaunchingAnotherScreen" prefWidth="74.0" text="Agregar"/>
                         <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="79.0" text="Modificar"/>
                         <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="73.0" text="Borrar"/>
                     </children>
