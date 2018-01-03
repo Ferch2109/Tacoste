@@ -62,7 +62,7 @@ CREATE TABLE contener (
 
 CREATE TABLE categoria_producto (
     id_producto VARCHAR(20),
-    categoria VARCHAR(20)
+    categoria VARCHAR(80)
     
 );
 
@@ -178,8 +178,8 @@ CREATE TABLE informacion_sucursal (
     cp INTEGER,
     calle  VARCHAR(25) NOT NULL,
     numero INTEGER,
-    hora_inicio INTEGER,
-    hora_cierre INTEGER
+    hora_inicio VARCHAR(5),
+    hora_cierre VARCHAR(5)
 );
 
 CREATE TABLE telefono_sucursal (
