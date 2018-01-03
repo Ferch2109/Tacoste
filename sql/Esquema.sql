@@ -62,7 +62,7 @@ CREATE TABLE contener (
 
 CREATE TABLE categoria_producto (
     id_producto VARCHAR(20),
-    categoria VARCHAR(20)
+    categoria VARCHAR(80)
     
 );
 
