@@ -255,7 +255,7 @@ CREATE TABLE datos_suministro (
 
 CREATE TABLE inventario (
     no_lote INTEGER,
-    dia VARCHAR(25) NOT NULL,
+    dia DATE NOT NULL,
     cantidad FLOAT
 );
 
