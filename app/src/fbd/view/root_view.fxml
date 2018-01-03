@@ -17,32 +17,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="900.0" prefHeight="616.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fbd.controller.RootController">
    <top>
       <MenuBar minWidth="800.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <menus>
-            <Menu disable="true" mnemonicParsing="false" styleClass="background_text" text="Tacoste">
+            <Menu mnemonicParsing="false" styleClass="background_text" text="Tacoste">
                <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open…" />
-                  <Menu mnemonicParsing="false" text="Open Recent" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save As…" />
-                  <MenuItem mnemonicParsing="false" text="Revert" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Preferences…" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quit" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchTaqueriasSection" text="Sucursales" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchEmployeesSection" text="Empleados" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchClientsSection" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchProductsSection" text="Productos" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchProvidersSection" text="Provedores" />
+                  <MenuItem mnemonicParsing="false" onAction="#launchGenerateReport" text="Reportes" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Sucursales" />
-            <Menu mnemonicParsing="false" text="Empleados" />
-            <Menu mnemonicParsing="false" text="Clientes" />
-            <Menu mnemonicParsing="false" text="Productos" />
-            <Menu mnemonicParsing="false" text="Provedores" />
-            <Menu mnemonicParsing="false" text="Reportes" />
+
          </menus>
       </MenuBar>
    </top>
@@ -54,7 +43,7 @@
                   <Font name="Century Gothic" size="20.0" />
                </font>
             </Label>
-            <TableView id="menu" minHeight="508.0" minWidth="430.0">
+            <TableView id="menu" fx:id="tableViewProducts" minHeight="508.0" minWidth="430.0">
                <columns>
                   <TableColumn maxWidth="1.7976931348623157E308" minWidth="107.0" prefWidth="107.0" text="Producto" />
                   <TableColumn maxWidth="1.7976931348623157E308" minWidth="107.0" prefWidth="107.0" text="Precio" />
@@ -71,11 +60,11 @@
    <right>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="554.0" prefWidth="409.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView id="pedido" prefHeight="447.0" prefWidth="349.0">
+            <ListView id="pedido" fx:id="listViewOrderedProducts" prefHeight="447.0" prefWidth="349.0">
                <VBox.margin>
                   <Insets left="5.0" right="10.0" top="50.0" />
                </VBox.margin></ListView>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" text="Ordenar">
+            <Button fx:id="btnOrder" mnemonicParsing="false" onAction="#orderProductsFromOrderList" prefHeight="38.0" prefWidth="146.0" text="Ordenar">
                <VBox.margin>
                   <Insets left="180.0" top="20.0" />
                </VBox.margin></Button>
@@ -87,11 +76,11 @@
          <children>
             <VBox>
                <children>
-                  <Button mnemonicParsing="false" text="&lt;">
+                  <Button mnemonicParsing="false" onAction="#addProductFromMenu" text="&gt;">
                      <VBox.margin>
                         <Insets left="5.0" top="200.0" />
                      </VBox.margin></Button>
-                  <Button mnemonicParsing="false" text="&gt;">
+                  <Button mnemonicParsing="false" onAction="#removeProductFromOrderList" text="&lt;">
                      <VBox.margin>
                         <Insets left="5.0" top="20.0" />
                      </VBox.margin>
@@ -106,6 +95,17 @@
       </HBox>
    </center>
    <bottom>
-      <AnchorPane prefHeight="20.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="20.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#testConnection" text="Probar conexión" />
+            <Label fx:id="labelConnectionStatus" layoutX="118.0" layoutY="5.0" text="Prueba la conexión antes de empezar">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" top="5.0" />
+         </BorderPane.margin></AnchorPane>
    </bottom>
 </BorderPane>
