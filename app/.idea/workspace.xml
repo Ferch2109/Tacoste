@@ -7,13 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_8_0_8_dmr.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/fbd/model/Taqueria.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/fbd/util/TableViewUtil.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app.iml" afterPath="$PROJECT_DIR$/app.iml" />
-      <change beforePath="$PROJECT_DIR$/src/fbd/controller/RootController.java" afterPath="$PROJECT_DIR$/src/fbd/controller/RootController.java" />
-      <change beforePath="$PROJECT_DIR$/src/fbd/controller/TableViewController.java" afterPath="$PROJECT_DIR$/src/fbd/controller/TableViewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/fbd/util/DBUtil.java" afterPath="$PROJECT_DIR$/src/fbd/util/DBUtil.java" />
-      <change beforePath="$PROJECT_DIR$/src/fbd/view/table_view.fxml" afterPath="$PROJECT_DIR$/src/fbd/view/table_view.fxml" />
-      <change beforePath="$PROJECT_DIR$/../pbcopy" afterPath="" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,7 +76,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="TableViewController.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="TableViewController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/fbd/controller/TableViewController.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="305">
@@ -91,13 +89,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TableViewUtil.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TableViewUtil.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/fbd/util/TableViewUtil.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="780">
-                  <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+                <state relative-caret-position="105">
+                  <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
                   <folding>
-                    <element signature="imports" expanded="true" />
                     <element signature="e#427#457#0" expanded="true" />
                   </folding>
                 </state>
@@ -135,8 +132,8 @@
           <file leaf-file-name="DBUtil.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/fbd/util/DBUtil.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+                <state relative-caret-position="165">
+                  <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -456,6 +453,14 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
+    <task id="LOCAL-00001" summary="Le adelanté a esta pendejada ya hace el puto query a la puta bases de datos y modifica la puta vista, aún tengo que validaro muchos putos casos, pero use puto mysql porque no puta quería instalar el puto oracle, de hecho tengo que quitar el puto mysql.">
+      <created>1515140839929</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1515140839930</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -568,6 +573,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+    <MESSAGE value="Le adelanté a esta pendejada ya hace el puto query a la puta bases de datos y modifica la puta vista, aún tengo que validaro muchos putos casos, pero use puto mysql porque no puta quería instalar el puto oracle, de hecho tengo que quitar el puto mysql." />
+    <option name="LAST_COMMIT_MESSAGE" value="Le adelanté a esta pendejada ya hace el puto query a la puta bases de datos y modifica la puta vista, aún tengo que validaro muchos putos casos, pero use puto mysql porque no puta quería instalar el puto oracle, de hecho tengo que quitar el puto mysql." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -696,6 +703,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -922,17 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fbd/util/TableViewUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#427#457#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.sdkman/candidates/java/9.0.1-oracle/lib/src.zip!/javafx.base/javafx/collections/FXCollections.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -944,16 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fbd/util/DBUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fbd/controller/TableViewController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -961,6 +948,26 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#713#731#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fbd/util/DBUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fbd/util/TableViewUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding>
+            <element signature="e#427#457#0" expanded="true" />
           </folding>
         </state>
       </provider>
