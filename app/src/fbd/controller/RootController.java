@@ -1,12 +1,12 @@
 package fbd.controller;
 
 import fbd.model.OrderInfo;
+import fbd.util.DBUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,7 +25,6 @@ public class RootController {
 
     @FXML private void launchEmployeesSection() throws IOException {
         loadView("Empleados");
-        System.out.println(7);
     }
 
     @FXML private void launchClientsSection() throws IOException {
@@ -40,7 +39,7 @@ public class RootController {
         loadView("Provedores");
     }
 
-    @FXML private void launchGenerateReport(){
+    @FXML private void launchGenerateReport() {
         //TODO: Generar reporte bonito
     }
 
@@ -49,6 +48,7 @@ public class RootController {
         Parent root = loader.load();
 
         TableViewController controller = loader.getController();
+        controller.initialize(sceneTitle);
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle(sceneTitle);
@@ -59,7 +59,11 @@ public class RootController {
 
 
     @FXML private void testConnection() {
-        labelConnectionStatus.setText("TODO");
+        if (DBUtil.getConnection() == null) {
+            labelConnectionStatus.setText("No se pudo estblecer conexión :'v");
+        } else {
+            labelConnectionStatus.setText("Conexión establecida");
+        }
     }
 
     @FXML private void addProductFromMenu() {
@@ -68,7 +72,7 @@ public class RootController {
     @FXML private void removeProductFromOrderList() {
     }
 
-    @FXML private void orderProductsFromOrderList() throws  IOException{
+    @FXML private void orderProductsFromOrderList() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fbd/view/order_info_view.fxml"));
         Parent root = loader.load();
 
