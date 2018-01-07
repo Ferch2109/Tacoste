@@ -11,6 +11,7 @@ ALTER TABLE pedido ADD CONSTRAINT fk_id_comensal_1 FOREIGN KEY (id_comensal) REF
 --Mesa
 ALTER TABLE mesa ADD CONSTRAINT pk_id_mesa PRIMARY KEY(id_mesa);
 ALTER TABLE mesa ADD CONSTRAINT fk_id_comensal_2 FOREIGN KEY (id_comensal) REFERENCES comensal(id_comensal);
+ALTER TABLE mesa ADD CONSTRAINT fk_id_comensal_25 FOREIGN KEY (id_paymaster) REFERENCES comensal(id_comensal);
 
 --Producto
 ALTER TABLE producto ADD CONSTRAINT pk_id_producto PRIMARY KEY(id_producto);
@@ -98,3 +99,4 @@ ALTER TABLE suministrar ADD CONSTRAINT fk_no_lote FOREIGN KEY (no_lote) REFERENC
 
 ALTER TABLE generar ADD CONSTRAINT fk_id_sucursal_3 FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal);
 ALTER TABLE generar ADD CONSTRAINT fk_no_lote_1 FOREIGN KEY (no_lote) REFERENCES inventario(no_lote);
+

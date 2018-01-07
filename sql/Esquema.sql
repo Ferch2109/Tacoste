@@ -5,7 +5,7 @@ CREATE TABLE comensal(
     paterno VARCHAR(30),
     materno VARCHAR(30),
     nombre VARCHAR(50),
-    correo VARCHAR(100) CHECK (Correo IN ('%@%.%'))
+    correo VARCHAR(100)
 );
 
 
@@ -17,7 +17,7 @@ CREATE TABLE datos_comensal(
     colonia VARCHAR(50),
     cp INTEGER,
     numero INTEGER,
-    correo VARCHAR(100) CHECK (Correo IN ('%@%.%')),
+    correo VARCHAR(100),
     telefono INTEGER,
     puntos INTEGER
     
@@ -45,7 +45,7 @@ CREATE TABLE mesa (
 
 CREATE TABLE producto(
     id_producto VARCHAR(20) ,
-    nombre VARCHAR(20),
+    nombre VARCHAR(50),
     precio INTEGER
 
 );
@@ -68,7 +68,7 @@ CREATE TABLE categoria_producto (
 
 
 CREATE TABLE ingrediente (
-    nombre_ingrediente VARCHAR(20) 
+    nombre_ingrediente VARCHAR(50) 
 );
 
 
@@ -76,7 +76,7 @@ CREATE TABLE ingrediente (
 
 CREATE TABLE participar(
     id_producto VARCHAR(20),
-    nombre_ingrediente VARCHAR(20)
+    nombre_ingrediente VARCHAR(50)
 );
 
 
@@ -103,7 +103,7 @@ CREATE TABLE etiqueta_producto (
 CREATE TABLE salsa (
     id_producto VARCHAR(20),
     id_salsa VARCHAR(20),
-    nombre VARCHAR(20),
+    nombre VARCHAR(50),
     nivel_picor INTEGER
 );
 
