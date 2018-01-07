@@ -11,6 +11,7 @@ import javafx.util.Callback;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class TableViewUtil {
@@ -18,7 +19,9 @@ public class TableViewUtil {
     @SuppressWarnings("unchecked")
     public static void addTableColumnsDynamically(TableView<ObservableList> tableView,
                                                   String titleAlias,
+                                                  List<String> columnNames,
                                                   ObservableList<ObservableList> data) {
+        data = FXCollections.observableArrayList();
         try {
             Connection c;
             c = DBUtil.getConnection();
@@ -33,7 +36,9 @@ public class TableViewUtil {
             for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
                 //We are using non property style for making dynamic table
                 final int j = i;
-                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i + 1));
+                String aux = rs.getMetaData().getColumnName(i + 1);
+                columnNames.add(aux);
+                TableColumn col = new TableColumn(aux);
                 col.setCellValueFactory((Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>) param ->
                         new SimpleStringProperty(param.getValue().get(j).toString()));
 

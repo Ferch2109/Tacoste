@@ -15,7 +15,6 @@ public class DBUtil {
 
     public static Connection getConnection() {
         Connection db = null;
-
         try {
             //Class.forName("oracle.jdbc.OracleDriver");
             db = DriverManager.getConnection(url, user, password);
