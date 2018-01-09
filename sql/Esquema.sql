@@ -4,8 +4,7 @@ CREATE TABLE comensal(
     id_comensal VARCHAR(20),
     paterno VARCHAR(30),
     materno VARCHAR(30),
-    nombre VARCHAR(50),
-    correo VARCHAR(100)
+    nombre VARCHAR(50)
 );
 
 
@@ -16,6 +15,7 @@ CREATE TABLE datos_comensal(
     municipio VARCHAR(50),
     colonia VARCHAR(50),
     cp INTEGER,
+    calle VARCHAR(50),
     numero INTEGER,
     correo VARCHAR(100),
     telefono INTEGER,
