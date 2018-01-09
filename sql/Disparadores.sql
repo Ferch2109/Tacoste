@@ -90,11 +90,11 @@ begin
                 insert into categoria_producto(id_producto,categoria) values(:new.id_producto, 'Alambres');
         elsif nom in ('Ensalada','De la granja') then
                 insert into categoria_producto(id_producto,categoria) values(:new.id_producto, 'Ensaladas');
-        elsif nom in ('El de pastor (2x1)','Los de guisado','Bistec','Chuleta','Pechuga de pollo','Pastor de pollo','Chorizo','Arrachera','Costilla') then
+        elsif nom in ('El de pastor (2x1)','Los de guisado','El de Bistec','El de Chuleta','El de Pechuga de pollo','El de Pastor de pollo','El de Chorizo','El de Arrachera','El de Costilla') then
                 insert into categoria_producto(id_producto,categoria) values(:new.id_producto, 'Tacos');
         elsif nom in ('100% Pastor','100% Carne de res','100% Pechuga de pollo','100% Arrachera') then
                 insert into categoria_producto(id_producto,categoria) values(:new.id_producto, 'Hamburguesas');
-        elsif nom in ('Pastor','Bistec','Milanesa','Arrachera','Pollo') then
+        elsif nom in ('Torta pastor','Torta bistec','Torta milanesa','Torta arrachera','Torta pollo') then
                 insert into categoria_producto(id_producto,categoria) values(:new.id_producto, 'Tortas');
         elsif nom in ('Jarras de agua','Aguas frescas','Refrescos','Jugo de naranja','Naranjada','Cervezas','Micheladas','Cubanas','Cafe americano','Cafe de olla','Cafe capuchino','Chocolate con leche','Te','Cafe con leche','Vaso de leche') then
                 insert into categoria_producto(id_producto,categoria) values(:new.id_producto, 'Bebidas');
