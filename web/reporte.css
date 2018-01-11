@@ -1,3 +1,15 @@
+@font-face{
+	/*Creator: Zetafonts*/
+	font-family: florentia;
+	src: url(Florentia-Thin-trial.ttf);
+}
+
+@font-face{
+	/*Creator: Sander Kessels*/
+	font-family: centabel;
+	src: url(centabel.ttf);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -18,7 +30,18 @@ th,td{
     border-bottom: 1px solid #ddd;
 }
 
-h1{ font-family: "Centabel Book", Sans, Serif;
-	font-variant: small-caps;}
+h1{ 
+	font-family: centabel;
+	text-transform: uppercase;
+	line-height: 10%;
+}
 
-h2{ font-weight: lighter; }
+h2{ 
+	font-family: centabel;
+	font-weight: lighter; 
+	font-variant: small-caps;
+}
+
+.info_empresa{
+
+}
