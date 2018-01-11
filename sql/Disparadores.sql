@@ -2,8 +2,8 @@ CREATE OR REPLACE TRIGGER taquero_mucho
 AFTER INSERT ON pedido
 FOR EACH ROW
 BEGIN
-    update comensal SET puntos = puntos + (.10 * :new.total) 
-    WHERE no_pedido = :new.pedido;
+    UPDATE datos_comensal SET puntos = puntos + (.10* :new.total)
+    WHERE datos_comensal.id_comensal = :new.id_comensal;
 END;
 
 CREATE TABLE Historico (
@@ -19,54 +19,67 @@ AFTER INSERT OR UPDATE ON producto
 FOR EACH ROW
 BEGIN
     if inserting then
-        insert into Historico values(nom, :new.precio, 0, current_date);
+        insert into Historico values(:new.nombre, :new.precio, 0, current_date);
     elsif updating then
-        insert into Historico values(:old.nombre, :new.precio, :old.precio, current_date);
+        insert into Historico values(:old.nombre, :new.precio,
+:old.precio, current_date);
     end if;
-end;    
+end;
 
-CREATE OR REPLACE function saca_cuenta(pedido_dado varchar) return INTEGER is total INTEGER;
+CREATE OR REPLACE function saca_cuenta(pedido_dado varchar) return
+INTEGER is total INTEGER;
 BEGIN
-        select sum(precio) into total from (producto NATURAL JOIN pedido) 
-        where id_pedido = pedido.id_pedido;
+        select sum(precio) into total from (producto NATURAL JOIN pedido)
+        where no_pedido = pedido.no_pedido;
+END;
+
+
+CREATE OR REPLACE TRIGGER bono_empleado
+AFTER INSERT ON empleado
+FOR EACH ROW
+BEGIN
+    if MOD((current_date - :new.fecha_ingreso),5) = 0 then
+        DBMS_OUTPUT.put_line ('El empleado '||:new.curp||' merece un bono');
+    end if;
 END;
 
 CREATE OR REPLACE TRIGGER promociones
 AFTER INSERT ON pedido
-DECLARE 
-    precio_promo INTEGER;
+FOR EACH ROW
+DECLARE
+    precio INTEGER;
     cantidad INTEGER;
 BEGIN
-    if EXTRACT(DAY FROM :new.fecha) = 4 then 
-        select precio into precio_promo from producto
-        where lower(nombre) = 'pozole';
-        select cantidad into cantidad from contener natural join producto
-        where no_pedido = :new.no_pedido and lower(nombre) = 'pozole';
-        update pedido set total = total - (cantidad * precio_promo) 
-        where no_pedido = :new.no_pedido; 
-    elsif EXTRACT(DAY FROM :new.fecha) = 5 then
-        select precio into precio_promo from producto
-        where lower(nombre) like ('%taco%');
-        select cantidad into cantidad from contener NATURAL JOIN producto
-        where no_pedido = :new.no_pedido and nombre like ('%taco%');
-        update pedido set total = total - (cantidad * (precio_promo / 2))
-        where no_pedido = :new.no_pedido;
-    elsif EXTRACT(DAY FROM :new.fecha) = 2 then
-        select precio into  precio_promo from producto
-        where lower(nombre) like ('%torta%');
-        select cantidad into cantidad from contener NATURAL JOIN producto
-        where no_pedido = :new.no_pedido and lower(nombre) like ('%torta%');
-        update pedido set total = total - (cantidad * (precio_promo / 2))
-        where no_pedido = :new.no_pedido;
-        select precio into precio_promo from producto
-        where lower(nombre) like ('%hamburguesa%');
-        select cantidad into cantidad from contener natural join producto
-        where no_pedido = :new.no_pedido and lower(nombre) like ('%hamburguesa%');
-        update pedido set total = total - (cantidad * (precio_promo / 2));
+    if (EXTRACT (DAY FROM :new.fecha)) = 4 then
+        select precio into precio from producto where lower(nombre) = 'pozole';
+        select cantidad into cantidad from contener natural join
+producto where lower(nombre) = 'pozole';
+        update pedido set total = total - ((cantidad - 1)*precio)
+where no_pedido = :new.no_pedido;
+    elsif (EXTRACT (DAY FROM :new.fecha)) = 5 then
+        select precio into precio from producto where lower(nombre)
+like '%taco%';
+        select cantidad into cantidad from contener natural join
+producto where lower(nombre) like '%taco%';
+        update pedido set total = total - ((cantidad / 2) * precio)
+where no_pedido = :new.no_pedido;
+    elsif (EXTRACT (DAY FROM :new.fecha)) = 2 then
+        select precio into precio from producto where lower(nombre)
+like '%torta%';
+        select cantidad into cantidad from contener natural join
+producto where lower(nombre) like '%torta%';
+        update pedido set total = total - ((cantidad / 2) * precio)
+where no_pedido = :new.no_pedido;
+        select precio into precio from producto where lower(nombre)
+like '%hamburguesa%';
+        select cantidad into cantidad from contener natural join
+producto where lower(nombre) like '%hamburguesa%';
+        update pedido set total = total - ((cantidad / 2) * precio)
+where no_pedido = :new.no_pedido;
     end if;
 END;
 
-------MENÚ----
+------MENÃš----
 create or replace trigger categorias
 after insert or update of nombre,id_producto on producto
 for each row
