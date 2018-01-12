@@ -2,7 +2,7 @@ select * from comensal;
 
 select * from datos_comensal;
 
---nombre
+--nombre y id
 select id_comensal,nombre||' '||paterno||' '||materno as nombre from comensal;
 
 --dir = "calle num, del ,col,cp municipio,estado"

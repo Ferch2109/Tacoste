@@ -65,11 +65,27 @@ public class TableViewUtil {
         //TODO Hola Fer, aquí copias y pega el los selects que tienes dependiendo el nombre
         switch (titleAlias) {
             case "Taquerias":
-                return "";
+                return "select id_sucursal,gerente,direccion,tel1,tel2,tel3 from " +
+                        "(select * from (select id_sucursal,\"1\" as tel1,\"2\" as tel2,\"3\" as tel3 from (select * from (select * from telefono_sucursal) natural join (SELECT id_sucursal, telefono, ROW_NUMBER() OVER (PARTITION BY id_sucursal ORDER BY id_sucursal) AS tel FROM telefono_sucursal) ) " +
+                        "pivot ( sum(telefono) for tel in (1,2,3) ) order by id_sucursal) natural join " +
+                        "(select * from gerencia_sucursal natural join (select curp, nombre||' '||paterno||' '||materno as gerente from empleado))) " +
+                        "natural join " +
+                        "(select id_sucursal,calle||' '||numero||', '||colonia||', '||cp||' '||municipio||', '||estado as direccion, hora_inicio,hora_cierre from informacion_sucursal) order by id_sucursal";
             case "Empleados":
-                return "";
+                return "select * from (select * " +
+                        "                from (select * from (select curp,rfc,nombre||' '||paterno||' '||materno as nombre, sueldo from empleado) " +
+                        "                                    natural join " +
+                        "                                    (select curp,colonia||', '||cp||' '||municipio||', '||estado as direccion,correo from datos_empleado natural join correo_empleado)) " +
+                        "                      natural join (select curp,\"1\" as tel1,\"2\" as tel2,\"3\" as tel3 from (select * from (select * from telefono_empleado) natural join (SELECT curp, telefono_empleado, ROW_NUMBER() OVER (PARTITION BY curp ORDER BY curp) AS tel FROM telefono_empleado) ) " +
+                        "                pivot ( sum(telefono_empleado) for tel in (1,2,3) ))) " +
+                        "                natural join " +
+                        "                (select curp,tipo,vigencia,transporte from repartidor natural join datos_licencia) " +
+                        "order by nombre";
             case "Clientes":
-                return "";
+                return "select * from (select id_comensal,nombre||' '||paterno||' '||materno as nombre from comensal) " +
+                        "              natural join " +
+                        "              (select id_comensal,calle||' '||numero||', '||colonia||', '||cp||' '||municipio||', '||estado as direccion,correo,telefono,puntos from datos_comensal) " +
+                        "order by id_comensal";
             case "Productos":
                 return "";
             case "Provedores":
