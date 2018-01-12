@@ -1,5 +1,7 @@
 package fbd.controller;
 
+import fbd.html.HtmlReportGenerator;
+import fbd.html.QueryPair;
 import fbd.model.OrderInfo;
 import fbd.util.DBUtil;
 import fbd.util.TableViewUtil;
@@ -13,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class RootController {
@@ -47,8 +50,14 @@ public class RootController {
     }
 
     @FXML private void launchGenerateReport() throws IOException {
-        //TODO Fer ayuda, ya abre el hhtml pero no sé como meterle los datos.
-        Desktop.getDesktop().browse(new File("../web/Reporte.html").toURI());
+        File file = new File("../web/Reporte.html");
+        file.createNewFile();
+
+        FileWriter writer = new FileWriter(file);
+        writer.write(HtmlReportGenerator.getWholeHtml(QueryPair.hardcodedQueryPairs));
+        writer.close();
+
+        Desktop.getDesktop().browse(file.toURI());
     }
 
     private void loadView(String sceneTitle) throws IOException {
