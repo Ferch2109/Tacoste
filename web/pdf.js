@@ -17,10 +17,10 @@ window.onload = function(){
 
 html2canvas(document.body,{onrendered: function(canvas){
 		var img = canvas.toDataURL("image/png");
-		var doc = new jsPDF();
+		var doc = new jsPDF('0', 'pt', 'letter');
 		var width = canvas.width;
 		var height = canvas.clientHeight;
-		doc.addImage(img, 'PNG', 10, 10);
+		doc.addImage(img, 'PNG', 20, 20);
 		doc.save('text.pdf');
 	}});
 }
