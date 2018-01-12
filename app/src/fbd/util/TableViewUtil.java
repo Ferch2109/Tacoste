@@ -17,51 +17,43 @@ import java.util.List;
 public class TableViewUtil {
 
     @SuppressWarnings("unchecked")
-    public static void addTableColumnsDynamically(TableView<ObservableList> tableView,
-                                                  String titleAlias,
-                                                  List<String> columnNames,
-                                                  ObservableList<ObservableList> data) {
+    public static void addTableColumnsAndPopulateItDynamically(TableView<ObservableList> tableView,
+                                                               String titleAlias,
+                                                               List<String> columnNames,
+                                                               ObservableList<ObservableList> data,
+                                                               boolean populateTable) {
         data = FXCollections.observableArrayList();
         try {
-            Connection c;
-            c = DBUtil.getConnection();
-            //SQL FOR SELECTING ALL OF CUSTOMER
-            String SQL = "SELECT * FROM " + getTable(titleAlias);
-            //ResultSet
-            ResultSet rs = c.createStatement().executeQuery(SQL);
+            Connection c = DBUtil.getConnection();
 
-            /**********************************
-             * TABLE COLUMN ADDED DYNAMICALLY *
-             **********************************/
+            String sql = getQuery(titleAlias);
+
+            ResultSet rs = c.createStatement().executeQuery(sql);
+
             for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-                //We are using non property style for making dynamic table
                 final int j = i;
                 String aux = rs.getMetaData().getColumnName(i + 1);
-                columnNames.add(aux);
+                if (columnNames != null) {
+                    columnNames.add(aux);
+                }
                 TableColumn col = new TableColumn(aux);
                 col.setCellValueFactory((Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>) param ->
                         new SimpleStringProperty(param.getValue().get(j).toString()));
 
                 tableView.getColumns().addAll(col);
-                System.out.println("Column [" + i + "] ");
             }
 
-            while (rs.next()) {
-                //Iterate Row
-                ObservableList<String> row = FXCollections.observableArrayList();
-                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                    //Iterate Column
-                    String s = rs.getString(i);
-                    row.add(s != null ? s : "");
+            if (populateTable) {
+                while (rs.next()) {
+                    ObservableList<String> row = FXCollections.observableArrayList();
+                    for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                        String s = rs.getString(i);
+                        row.add(s != null ? s : "");
+                    }
+                    data.add(row);
                 }
-                System.out.println("Row [1] added " + row);
-                data.add(row);
-
-            }
-
-            //FINALLY ADDED TO TableView
             tableView.setItems(data);
-
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -69,18 +61,36 @@ public class TableViewUtil {
     }
 
 
-    private static String getTable(String titleAlias) {
-        //TODO completear el pendejo nombre de las putas tablas
+    private static String getQuery(String titleAlias) {
+        //TODO Hola Fer, aquí copias y pega el los selects que tienes dependiendo el nombre
         switch (titleAlias) {
             case "Taquerias":
-                return "informacion_sucursal";
+                return "select id_sucursal,gerente,direccion,tel1,tel2,tel3 from " +
+                        "(select * from (select id_sucursal,\"1\" as tel1,\"2\" as tel2,\"3\" as tel3 from (select * from (select * from telefono_sucursal) natural join (SELECT id_sucursal, telefono, ROW_NUMBER() OVER (PARTITION BY id_sucursal ORDER BY id_sucursal) AS tel FROM telefono_sucursal) ) " +
+                        "pivot ( sum(telefono) for tel in (1,2,3) ) order by id_sucursal) natural join " +
+                        "(select * from gerencia_sucursal natural join (select curp, nombre||' '||paterno||' '||materno as gerente from empleado))) " +
+                        "natural join " +
+                        "(select id_sucursal,calle||' '||numero||', '||colonia||', '||cp||' '||municipio||', '||estado as direccion, hora_inicio,hora_cierre from informacion_sucursal) order by id_sucursal";
             case "Empleados":
-                return "";
+                return "select * from (select * " +
+                        "                from (select * from (select curp,rfc,nombre||' '||paterno||' '||materno as nombre, sueldo from empleado) " +
+                        "                                    natural join " +
+                        "                                    (select curp,colonia||', '||cp||' '||municipio||', '||estado as direccion,correo from datos_empleado natural join correo_empleado)) " +
+                        "                      natural join (select curp,\"1\" as tel1,\"2\" as tel2,\"3\" as tel3 from (select * from (select * from telefono_empleado) natural join (SELECT curp, telefono_empleado, ROW_NUMBER() OVER (PARTITION BY curp ORDER BY curp) AS tel FROM telefono_empleado) ) " +
+                        "                pivot ( sum(telefono_empleado) for tel in (1,2,3) ))) " +
+                        "                natural join " +
+                        "                (select curp,tipo,vigencia,transporte from repartidor natural join datos_licencia) " +
+                        "order by nombre";
             case "Clientes":
-                return "";
+                return "select * from (select id_comensal,nombre||' '||paterno||' '||materno as nombre from comensal) " +
+                        "              natural join " +
+                        "              (select id_comensal,calle||' '||numero||', '||colonia||', '||cp||' '||municipio||', '||estado as direccion,correo,telefono,puntos from datos_comensal) " +
+                        "order by id_comensal";
             case "Productos":
                 return "";
             case "Provedores":
+                return "";
+            case "Menu":
                 return "";
             default:
                 return "";

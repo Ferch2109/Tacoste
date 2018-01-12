@@ -10,8 +10,7 @@ CREATE TABLE Historico (
     Nombre VARCHAR(100),
     Precio_Nuevo INTEGER,
     Precio_Anterior INTEGER,
-    Fecha_Cambio DATE,
-    CONSTRAINT PK_Historico PRIMARY KEY (Nombre, Precio_Anterior)
+    Fecha_Cambio DATE
 );
 
 CREATE OR REPLACE TRIGGER registro_historico

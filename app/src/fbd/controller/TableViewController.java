@@ -37,7 +37,7 @@ public class TableViewController {
     public void initialize(String titleAlias) {
         this.titleAlias = titleAlias;
         columnNames = new ArrayList<>();
-        TableViewUtil.addTableColumnsDynamically(tableView, this.titleAlias, columnNames, data);
+        TableViewUtil.addTableColumnsAndPopulateItDynamically(tableView, this.titleAlias, columnNames, data, true);
         //System.out.println(tableView.);
 
     }
