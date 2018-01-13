@@ -1,6 +1,6 @@
 -- Comensales que todavia no han consumido (nombre completo).
 SELECT  c.paterno, c.materno, c.nombre
-FROM comensal c, consumir cs,
+FROM comensal c, consumir cs
 WHERE c.id_comensal = cs.id_comensal AND
       NOT EXISTS (SELECT * FROM consumir WHERE c.id_comensal = consumir.id_comensal);
 
