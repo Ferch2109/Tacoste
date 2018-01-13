@@ -9,7 +9,20 @@ natural join (select * from comensal
 having count(id_comensal) = (select max(count(id_comensal)) from consumir group by id_comensal)));
 
 --Salsa más vendida (Nombre salsa,precio, numero de ventas)*/
- select * fro
+ select id_producto,nombre,nivel_picor,cantidad from contener natural join salsa order by id_producto;
+ 
+ select id_producto,nombre,nivel_picor,sum(precio) as total 
+ from (select * from contener natural join salsa ) natural join producto group by id_producto;
+ 
+select id_producto,nombre as salsa,numero_ventas,nivel_picor from (select id_producto,sum(cantidad) as numero_ventas from contener group by id_producto)
+natural join salsa;
+
+SELECT * FROM SALSA;
+ 
+select salsa as nombre,nivel_picor,numero_ventas,precio
+from (select id_producto,nombre as salsa,numero_ventas,nivel_picor from (select id_producto,sum(cantidad) as numero_ventas from contener group by id_producto)
+natural join salsa)
+natural join producto;
 
 --Todos los empleados que tienen como sueldo $5000 (Nombre completo)*/
  SELECT e.paterno, e.materno, e.nombre
@@ -17,17 +30,18 @@ having count(id_comensal) = (select max(count(id_comensal)) from consumir group 
  WHERE empleado.sueldo = 5000;
 
  --Nombre completo de los empleados que son gerentes*/
-SELECT e.paterno, e.materno, e.nombre
+SELECT e.nombre||' '||e.paterno||' '||e.materno as nombre
 FROM empleado NATURAL JOIN (SELECT curp
                             FROM gerencia_sucursal);
 
 --Nombre completo de las personas que son empleados excepto repartidores*/
-SELECT e.paterno, e.materno, e.nombre
-FROM empleado NATURAL JOIN (SELECT curp
-                           FROM repartidor
+SELECT e.nombre||' '||e.paterno||' '||e.materno as nombre
+FROM empleado
+WHERE curp in (SELECT curp
+                           FROM empleado
                            MINUS
                            SELECT curp
-                                        FROM repartidor);
+                          FROM repartidor);
 --Esta consulta nos muestra con que prefieren pagar los clientes, para
 --esto usamos
 --tablas temporales, para almacenar cuántas veces se paga con qué
