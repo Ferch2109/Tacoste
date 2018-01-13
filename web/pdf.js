@@ -1,10 +1,11 @@
 window.onload = function(){print();};
-function imprime(){
+
+/*function imprime(){
 
 	var x=document.getElementById('imprime').innerHTML;
 
 	var head = "<head><title>Reporte</title>"+
-				"<link rel='stylesheet' type='text/css' href='reporte.css'>"+
+				"<link rel='stylesheet' type='text/css' href='print.css'>"+
 				"</head>"
 	var body = "<body>"+x+"</body>";
 	var source = '<html>'+head+body+'</html>';
@@ -14,6 +15,7 @@ function imprime(){
 	printWindow.print();
 
 }
+*/
 
 descargar = function(){
 	html2canvas(document.body,{onrendered: function(canvas){
