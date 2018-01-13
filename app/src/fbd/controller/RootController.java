@@ -50,7 +50,8 @@ public class RootController {
     }
 
     @FXML private void launchGenerateReport() throws IOException {
-        File file = new File("../web/Reporte.html");
+        //File file = new File("../web/Reporte.html");
+        File file = new File("c://temp//Reporte.html");
         file.createNewFile();
 
         FileWriter writer = new FileWriter(file);

@@ -87,11 +87,12 @@ public class TableViewUtil {
                         "              (select id_comensal,calle||' '||numero||', '||colonia||', '||cp||' '||municipio||', '||estado as direccion,correo,telefono,puntos from datos_comensal) " +
                         "order by id_comensal";
             case "Productos":
-                return "";
+                return "select distinct * from (select * from (select * from producto natural join categoria_producto) natural join etiqueta_producto)\n" +
+                        "natural join (select emparejar.id_producto,nombre,nivel_picor from emparejar cross join salsa)";
             case "Provedores":
-                return "";
+                return "select * from IDENTIFICACION_PROVEEDOR natural join (select rfc,calle||' '||numero||', '||colonia||', '||cp||' '||municipio||', '||estado as direccion from datos_proveedor order by rfc)";
             case "Menu":
-                return "";
+                return "select id_producto,nombre,categoria,precio from producto natural join categoria_producto order by id_producto";
             default:
                 return "";
         }

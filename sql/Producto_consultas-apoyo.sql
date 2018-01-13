@@ -8,7 +8,7 @@ select * from etiqueta_producto;
 
 select * from salsa;
 
-select * from producto natural join categoria_producto order by id_producto;
+select id_producto,nombre,categoria,precio from producto natural join categoria_producto order by id_producto;
 
 select * from (select * from producto natural join categoria_producto) natural join etiqueta_producto order by id_producto;
 

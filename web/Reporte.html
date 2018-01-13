@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Reporte</title>
+    <title>Reporte</title>
     <link rel="stylesheet" type="text/css" href="reporte.css">
     <!--<<script type="conic-gradient.js"></script>-->
-    <script src="pdf.js"></script>
-	   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script> 
-	   <script type="text/javascript" src="html2canvas.js"></script>
-	   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script> 
+       <script type="text/javascript" src="html2canvas.js"></script>
+       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.js"></script>
 </head>
 <body>
-	<div style='margin-bottom: -35px'><button onclick="descargar()">Descargar</button></div>
-	<div id= 'print'>
-		<div class = "titulo">
-			<div>
-				<h1>Reporte</h1>
-				<h2>Tacoste, SA. tacoste@gmail.com</h2>
-			</div>
-			<div><img src='tacoste.png'></div>
-		</div>
-		<hr>
-		<div class = "tabla"></div>
-		<div class = "grafica"></div>
+    <div style='margin-bottom: -35px'><button onclick="descargar()">Descargar</button></div>
+    <div id= 'print'>
+    <div class = "titulo">
+        <div>
+            <h1>Reporte</h1>
+            <h2>Tacoste, SA. tacoste@gmail.com</h2>
+        </div>
+        <div><img src='tacoste.png'></div>
+    </div>	
 	</div>
-<!--incio -->    
-
-<!-- mi c´digo bonito-->
-
-<!-- fin-->    
-
 </body>
-<footer>
-	<h2>Tacoste, SA. || tacoste@gmail.com || www.tacoste.com.mx</h2>
-</footer>
+<footer><h2>Tacoste, SA. || tacoste@gmail.com || www.tacoste.com.mx</h2></footer>
+<script>
+	window.onload = function(){
+	var head = "<head><title>Reporte</title>"+
+				"<link rel='stylesheet' type='text/css' href='reporte.css'>"+
+				"<!--<<script type='conic-gradient.js'>"
+	var body = "<body>"+document.getElementsByTagName('body')[0].innerHTML+"</body>";
+	var source = '<html>'+head+body+'</html>';
+	var printWindow = window.open('', '', 'height=400,width=800');
+	
+	printWindow.document.write('<html>');
+	printWindow.document.write(head);
+	printWindow.document.write(body);
+	printWindow.document.write('</html>');
+	printWindow.document.close();
+	printWindow.print();
+}
+
+
+descargar = function(){
+	html2canvas(document.body,{onrendered: function(canvas){
+		alert('Descargando...');
+		var img = canvas.toDataURL("image/png");
+		var doc = new jsPDF('0', 'pt', 'letter');
+		var width = canvas.width;
+		var height = canvas.clientHeight;
+		doc.addImage(img, 'PNG', 20, 20);
+		doc.save('text.pdf');
+	}});
+}
+</script>
 </html>
