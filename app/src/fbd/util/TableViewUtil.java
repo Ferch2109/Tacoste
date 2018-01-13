@@ -62,7 +62,6 @@ public class TableViewUtil {
 
 
     private static String getQuery(String titleAlias) {
-        //TODO Hola Fer, aquí copias y pega el los selects que tienes dependiendo el nombre
         switch (titleAlias) {
             case "Taquerias":
                 return "select id_sucursal,gerente,direccion,tel1,tel2,tel3 from " +
@@ -87,8 +86,8 @@ public class TableViewUtil {
                         "              (select id_comensal,calle||' '||numero||', '||colonia||', '||cp||' '||municipio||', '||estado as direccion,correo,telefono,puntos from datos_comensal) " +
                         "order by id_comensal";
             case "Productos":
-                return "select distinct * from (select * from (select * from producto natural join categoria_producto) natural join etiqueta_producto)\n" +
-                        "natural join (select emparejar.id_producto,nombre,nivel_picor from emparejar cross join salsa)";
+                return "select distinct * from (select * from (select * from producto natural join categoria_producto) natural join etiqueta_producto) " +
+                        "natural join (select emparejar.id_producto,nombre as salsa,nivel_picor from emparejar cross join salsa) order by id_producto;";
             case "Provedores":
                 return "select * from IDENTIFICACION_PROVEEDOR natural join (select rfc,calle||' '||numero||', '||colonia||', '||cp||' '||municipio||', '||estado as direccion from datos_proveedor order by rfc)";
             case "Menu":
