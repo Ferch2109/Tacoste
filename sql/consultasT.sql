@@ -29,9 +29,9 @@ FROM empleado NATURAL JOIN (SELECT curp
                            SELECT curp
                                         FROM repartidor);
 --Esta consulta nos muestra con qué prefieren pagar los clientes, para
-esto usamos
+--esto usamos
 --tablas temporales, para almacenar cuántas veces se pagó con qué
-metodo y después
+--metodo y después
 --únicamente sacar el máximo.
 CREATE TABLE cuenta_veces
 AS SELECT count(forma_pago) pago FROM pedido
