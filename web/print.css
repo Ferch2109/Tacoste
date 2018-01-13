@@ -34,6 +34,7 @@
 	table{
 	    border-collapse: collapse;
 	    width: 100%;
+	    font-size: 12px;
 	}
 
 	th,td{
@@ -84,4 +85,12 @@
 	    margin-bottom: -20px;
 	    font-size: 15px;
 	}
+
+	.reporte>h2{
+		padding: 20px;
+	    padding-left: 25px;
+	    font-size: 20px;
+	    text-align: left
+	}
+
 }

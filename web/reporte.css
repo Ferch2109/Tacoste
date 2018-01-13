@@ -27,6 +27,7 @@ body{
 table{
     border-collapse: collapse;
     width: 100%;
+    font-size: 12px;
 }
 
 th,td{
@@ -76,4 +77,11 @@ img{z-index: 999;}
     padding-left: 25px;
     margin-bottom: -20px;
     font-size: 15px;
-}}
+}
+
+.reporte>h2{
+	padding: 20px;
+    padding-left: 25px;
+    font-size: 20px;
+    text-align: left
+}
