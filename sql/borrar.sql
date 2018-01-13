@@ -1,3 +1,5 @@
+DROP TABLE veces_productos;
+DROP TABLE cuenta_veces;
 DROP TABLE historico;
 DROP TABLE generar;
 DROP TABLE suministrar;

@@ -1,15 +1,17 @@
--- Comensales que todavia no han consumido (nombre completo).
-SELECT  c.paterno, c.materno, c.nombre
-FROM comensal c, consumir cs
-WHERE c.id_comensal = cs.id_comensal AND
-      NOT EXISTS (SELECT * FROM consumir WHERE c.id_comensal = consumir.id_comensal);
+-- Comensales que m·s han consumido (nombre completo).
+select nombre||' '||paterno||' '||materno as nombre 
+from comensal natural join (select id_comensal,count(id_comensal)
+from consumir group by id_comensal
+having count(id_comensal) = (select max(count(id_comensal)) from consumir group by id_comensal));
+
+select id_comensal,count(id_comensal)
+from consumir group by id_comensal
+having count(id_comensal) = (select max(count(id_comensal)) from consumir group by id_comensal);
 
 
---Comensales que ya han consumido (Nombre completo)*/
- SELECT c.paterno, c.materno, c.nombre
- FROM comensal c, datos_comensal cs
- WHERE c.id_comensal = cs.id_comensal AND
-      EXISTS (SELECT * FROM  WHERE c.id_comensal = consumir.id_comensal);
+
+--Salsa m·s vendida (Nombre salsa,precio, numero de ventas)*/
+ select * fro
 
 --Todos los empleados que tienen como sueldo $5000 (Nombre completo)*/
  SELECT e.paterno, e.materno, e.nombre
@@ -28,11 +30,11 @@ FROM empleado NATURAL JOIN (SELECT curp
                            MINUS
                            SELECT curp
                                         FROM repartidor);
---Esta consulta nos muestra con qu√© prefieren pagar los clientes, para
+--Esta consulta nos muestra con que prefieren pagar los clientes, para
 --esto usamos
---tablas temporales, para almacenar cu√°ntas veces se pag√≥ con qu√©
---metodo y despu√©s
---√∫nicamente sacar el m√°ximo.
+--tablas temporales, para almacenar cu·ntas veces se paga con quÈ
+--metodo y despuÈs
+--⁄nicamente sacar el m·ximo.
 CREATE TABLE cuenta_veces
 AS SELECT count(forma_pago) pago FROM pedido
 WHERE (lower(forma_pago) = 'efectivo') OR (lower(forma_pago) = 'tarjeta')
@@ -40,7 +42,7 @@ GROUP BY forma_pago;
 
 SELECT max(pago) as preferida FROM cuenta_veces;
 
---Que salsa es la que m√°s participa en los productos que vende la taquer√≠a.
+--Que salsa es la que m·s participa en los productos que vende la taquerÌa.
 CREATE TABLE cuenta_apariciones
 AS SELECT count(id_salsa) veces FROM emparejar
 GROUP BY id_salsa;
@@ -48,7 +50,9 @@ GROUP BY id_salsa;
 SELECT * FROM salsa
 WHERE id_producto = (SELECT max(veces) FROM cuenta_apariciones);
 
---Vamos a ver qu√© producto es el que piden m√°s en cualquier sucursal.
+--Vamos a ver quÈ producto es el que piden m· en cualquier sucursal.
+select * from   
+
 CREATE TABLE veces_productos
 AS SELECT count(id_producto) apariciones FROM contener
 GROUP BY id_producto;

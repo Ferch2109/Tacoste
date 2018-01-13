@@ -1,0 +1,87 @@
+@media print and (color) {
+   	@CHARSET "UTF-8";
+
+		#noprint{
+	   display: none;
+	}
+
+	@font-face{
+		/*Creator: Zetafonts*/
+		font-family: florentia;
+		src: url(Florentia-Thin-trial.ttf);
+	}
+
+	@font-face{
+		/*Creator: Sander Kessels*/
+		font-family: centabel;
+		src: url(centabel.ttf);
+	}
+
+	* {
+	  box-sizing: border-box;
+	  width: 100%;
+	  align-content: center;
+	  -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+	}
+
+	body{
+		width: 750px;
+		text-align: center;
+		font-family: fantasy;
+	}
+
+	table{
+	    border-collapse: collapse;
+	    width: 100%;
+	}
+
+	th,td{
+	    padding: 8px;
+	    text-align: left;
+	    border-bottom: 1px solid #ddd;
+	}
+
+	h1{ 
+		font-family: centabel;
+		text-transform: uppercase;
+		line-height: 10%;
+	}
+
+	h2{ 
+		font-family: florentia;
+	}
+	footer>h2{font-size: 15px;}
+
+	.titulo{ text-align: left; }
+
+	button{width:80px;margin-left: 800px;}
+
+	img{z-index: 999;}
+	.titulo>div>img{
+	    position: absolute;
+	    float: right;
+	    margin-left: 600px;
+	    margin-top: -80px;
+	    width: 120px;
+	}
+
+	.titulo>div>h1{
+	    background: orange;
+	    color: white;
+	    /* height: 100%; */
+	    padding: 20px;
+	    padding-left: 25px;
+	    margin-bottom: -20px;
+	    border-style: double;
+	}
+
+
+	.titulo>div>h2{
+	    /* height: 100%; */
+	    padding: 20px;
+	    padding-left: 25px;
+	    margin-bottom: -20px;
+	    font-size: 15px;
+	}
+}
