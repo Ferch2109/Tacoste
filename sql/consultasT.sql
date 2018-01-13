@@ -9,20 +9,18 @@ natural join (select * from comensal
 having count(id_comensal) = (select max(count(id_comensal)) from consumir group by id_comensal)));
 
 --Salsa más vendida (Nombre salsa,precio, numero de ventas)*/
-SELECT * FROM SALSA;
- 
 select salsa as nombre,nivel_picor,numero_ventas,precio
 from (select id_producto,nombre as salsa,numero_ventas,nivel_picor from (select id_producto,sum(cantidad) as numero_ventas from contener group by id_producto)
 natural join salsa)
 natural join producto;
 
---Todos los empleados que tienen como sueldo $5000 (Nombre completo,sucursal)*/
- SELECT e.nombre||' '||e.paterno||' '||e.materno as nombre,sucursal as id_sucursal
- FROM (select curp FROM datos_empleado JOIN ON datos_empleado.curp = empleado.curp
+--Todos los empleados que tienen como sueldo $5000 (RFC,nombre completo,sucursal)*/
+ SELECT rfc,e.nombre||' '||e.paterno||' '||e.materno as nombre,sucursal as id_sucursal
+ FROM (select curp,rfc FROM empleado JOIN ON datos_empleado.curp = empleado.curp
  WHERE empleado.sueldo = 5000) natural join empleado_sucursal;
 
- --Nombre completo de los empleados que son gerentes*/
-SELECT e.nombre||' '||e.paterno||' '||e.materno as nombre
+ --RFC,nombre completo de los empleados que son gerentes y su sucursal*/
+SELECT rfc,e.nombre||' '||e.paterno||' '||e.materno as nombre, sucursal as id_sucursal
 FROM empleado NATURAL JOIN (SELECT curp
                             FROM gerencia_sucursal);
 
