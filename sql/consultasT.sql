@@ -1,14 +1,12 @@
--- Comensales que más han consumido (nombre completo).
-select nombre||' '||paterno||' '||materno as nombre 
-from comensal natural join (select id_comensal,count(id_comensal)
-from consumir group by id_comensal
-having count(id_comensal) = (select max(count(id_comensal)) from consumir group by id_comensal));
-
-select id_comensal,count(id_comensal)
-from consumir group by id_comensal
-having count(id_comensal) = (select max(count(id_comensal)) from consumir group by id_comensal);
-
-
+-- Comensales que más han consumido (nombre completo,veces que consumio, total pagado).
+select nombre||' '||paterno||' '||materno as nombre, veces_consumo, total
+from  (select id_comensal,sum(precio) as total 
+      from (select * from consumir natural join contener) 
+      natural join producto group by id_comensal) 
+natural join (select * from comensal 
+              natural join (select id_comensal,count(id_comensal) as veces_consumo
+              from consumir group by id_comensal
+having count(id_comensal) = (select max(count(id_comensal)) from consumir group by id_comensal)));
 
 --Salsa más vendida (Nombre salsa,precio, numero de ventas)*/
  select * fro

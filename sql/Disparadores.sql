@@ -25,13 +25,32 @@ BEGIN
     end if;
 end;
 
+--Versión fer:
+/*CREATE OR REPLACE TYPE total is OBJECT(
+id_comensal varchar(20),
+total integer);
+
+CREATE OR REPLACE TYPE total_consumo IS TABLE OF total;
+
+CREATE OR REPLACE function saca_cuenta(comensal varchar(20)) return
+total_consumo is temp total_consumo;
+BEGIN
+        select cast( multiset(
+            select id_comensal,sum(precio) as total
+            from (select * from consumir natural join contener) 
+            natural join producto where id_comensal = comensal)
+        as total_consumo) into temp from dual;
+return temp
+END total_consumo;
+*/
+--Version fong:
+
 CREATE OR REPLACE function saca_cuenta(pedido_dado varchar) return
 INTEGER is total INTEGER;
 BEGIN
         select sum(precio) into total from (producto NATURAL JOIN pedido)
         where no_pedido = pedido.no_pedido;
 END;
-
 
 CREATE OR REPLACE TRIGGER bono_empleado
 AFTER INSERT ON empleado
