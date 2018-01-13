@@ -48,7 +48,8 @@ footer>h2{font-size: 15px;}
 
 .titulo{ text-align: left; }
 
-button{width:80px;margin-left: 800px; margin-bottom: -100px;}
+button{width:80px;margin-left: 800px;}
+
 img{z-index: 999;}
 .titulo>div>img{
     position: absolute;

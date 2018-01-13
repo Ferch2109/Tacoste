@@ -1,18 +1,10 @@
 window.onload = function(){
-	var head = "<head><title>Reporte</title>"+
-				"<link rel='stylesheet' type='text/css' href='reporte.css'>"+
-				"<!--<<script type='conic-gradient.js'></script>--></head>"
-	var body = "<body>"+document.getElementsByTagName('body')[0].innerHTML+"</body>";
-	var source = '<html>'+head+body+'</html>';
-	var printWindow = window.open('', '', 'height=400,width=800');
-	
-	printWindow.document.write('<html>');
-	printWindow.document.write(head);
-	printWindow.document.write(body);
-	printWindow.document.write('</html>');
-	printWindow.document.close();
-	printWindow.print();
-
+	var w=window.open(' ','popimpr');
+	var doc = document.getElementById('print');
+	alert(doc.innerHTML);
+	w.document.write(doc.innerHTML);
+	w.print();
+	w.close();
 };
 
 
