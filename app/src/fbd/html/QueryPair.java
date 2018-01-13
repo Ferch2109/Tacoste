@@ -65,9 +65,7 @@ public class QueryPair {
                                     "AS SELECT count(id_producto) apariciones FROM contener " +
                                     "GROUP BY id_producto; " +
                                     "SELECT nombre FROM producto " +
-                                    "WHERE id_producto = (SELECT max(apariciones) FROM veces_productos)"),
-                    new QueryPair("Información Sucursal 3",
-                            "select * from informacion_sucursal"));
+                                    "WHERE id_producto = (SELECT max(apariciones) FROM veces_productos)");
 
     private String reportTitle;
     private String sqlQuery;

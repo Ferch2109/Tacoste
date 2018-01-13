@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e6ab8bf5-ea54-44ef-8717-68680f0e9ab0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/fbd/html/QueryPair.java" afterPath="$PROJECT_DIR$/src/fbd/html/QueryPair.java" />
-      <change beforePath="$PROJECT_DIR$/../sql/Inserts.sql" afterPath="$PROJECT_DIR$/../sql/Inserts.sql" />
-      <change beforePath="$PROJECT_DIR$/../sql/consultasT.sql" afterPath="$PROJECT_DIR$/../sql/consultasT.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,8 +109,8 @@
       <file leaf-file-name="QueryPair.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/fbd/html/QueryPair.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="56" column="75" lean-forward="false" selection-start-line="56" selection-start-column="75" selection-end-line="56" selection-end-column="75" />
+            <state relative-caret-position="424">
+              <caret line="67" column="105" lean-forward="false" selection-start-line="67" selection-start-column="105" selection-end-line="67" selection-end-column="105" />
               <folding />
             </state>
           </provider>
@@ -805,8 +803,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fbd/html/QueryPair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="56" column="75" lean-forward="false" selection-start-line="56" selection-start-column="75" selection-end-line="56" selection-end-column="75" />
+        <state relative-caret-position="424">
+          <caret line="67" column="105" lean-forward="false" selection-start-line="67" selection-start-column="105" selection-end-line="67" selection-end-column="105" />
           <folding />
         </state>
       </provider>

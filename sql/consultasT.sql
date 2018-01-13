@@ -8,24 +8,33 @@ natural join (select * from comensal
               from consumir group by id_comensal
 having count(id_comensal) = (select max(count(id_comensal)) from consumir group by id_comensal)));
 
---Salsa más vendida (Nombre salsa,precio, numero de ventas)*/
+--Venta de salsas (Nombre salsa,precio, numero de ventas,nivel picor)
 select salsa as nombre,nivel_picor,numero_ventas,precio
-from (select id_producto,nombre as salsa,numero_ventas,nivel_picor from (select id_producto,sum(cantidad) as numero_ventas from contener group by id_producto)
-natural join salsa)
+from (select id_producto,nombre as salsa,numero_ventas,nivel_picor 
+      from (select id_producto,sum(cantidad) as numero_ventas from contener group by id_producto) 
+      natural join salsa) 
 natural join producto;
 
---Todos los empleados que tienen como sueldo $5000 (RFC,nombre completo,sucursal)*/
- SELECT rfc,e.nombre||' '||e.paterno||' '||e.materno as nombre,sucursal as id_sucursal
- FROM (select curp,rfc FROM empleado JOIN ON datos_empleado.curp = empleado.curp
- WHERE empleado.sueldo = 5000) natural join empleado_sucursal;
+--Venta de las salsas en el último año (Nombre salsa,precio, numero de ventas)*/
+select salsa as nombre,nivel_picor,numero_ventas,precio
+from (select id_producto,nombre as salsa,numero_ventas,nivel_picor 
+      from (select id_producto,sum(cantidad) as numero_ventas 
+            from (select * 
+                  from contener natural join pedido 
+                  where EXTRACT(YEAR FROM fecha) in (SELECT EXTRACT(YEAR FROM sysdate) FROM dual)) group by id_producto)
+natural join salsa)
+natural join producto order by numero_ventas desc;
+
+--Todos los empleados que tienen como sueldo $5000 o mas(RFC,nombre completo,sucursal)*/
+ SELECT rfc,nombre||' '||paterno||' '||materno as nombre, id_sucursal as sucursal
+ FROM (select * FROM empleado WHERE sueldo >= 5000) natural join empleado_sucursal;
 
  --RFC,nombre completo de los empleados que son gerentes y su sucursal*/
-SELECT rfc,e.nombre||' '||e.paterno||' '||e.materno as nombre, sucursal as id_sucursal
-FROM empleado NATURAL JOIN (SELECT curp
-                            FROM gerencia_sucursal);
+SELECT rfc,nombre||' '||paterno||' '||materno as nombre, id_sucursal as sucursal
+FROM empleado NATURAL JOIN gerencia_sucursal;
 
 --Nombre completo de las personas que son empleados excepto repartidores*/
-SELECT e.nombre||' '||e.paterno||' '||e.materno as nombre
+SELECT curp,nombre||' '||paterno||' '||materno as nombre,rfc
 FROM empleado
 WHERE curp in (SELECT curp
                            FROM empleado
@@ -53,7 +62,6 @@ SELECT * FROM salsa
 WHERE id_producto = (SELECT max(veces) FROM cuenta_apariciones);
 
 --Vamos a ver qué producto es el que piden má en cualquier sucursal.
-select * from   
 
 CREATE TABLE veces_productos
 AS SELECT count(id_producto) apariciones FROM contener
