@@ -73,7 +73,7 @@ public class HtmlReportGenerator {
                 builder.append("</tr>\n");
             }
 
-        } catch (SQLException ignored) {
+        } catch (Exception ignored) {
         }
 
         builder.append("</table>" +
