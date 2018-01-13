@@ -64,6 +64,10 @@ ALTER TABLE supervisar ADD CONSTRAINT fk_curp4 FOREIGN KEY (curp) REFERENCES emp
 ALTER TABLE sucursal ADD CONSTRAINT pk_id_sucursal PRIMARY KEY(id_sucursal);
 ALTER TABLE gerencia_sucursal ADD CONSTRAINT fk_id_sucursal FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal) ON DELETE CASCADE;
 ALTER TABLE gerencia_sucursal ADD CONSTRAINT fk_curp FOREIGN KEY (curp) REFERENCES empleado(curp) ON DELETE CASCADE;
+
+ALTER TABLE empleado_sucursal ADD CONSTRAINT fk_id_sucursal80 FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal) ON DELETE CASCADE;
+ALTER TABLE empleado_sucursal ADD CONSTRAINT fk_curp81 FOREIGN KEY (curp) REFERENCES empleado(curp) ON DELETE CASCADE;
+
 ALTER TABLE informacion_sucursal ADD CONSTRAINT fk_id_sucursal1 FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal) ON DELETE CASCADE;
 ALTER TABLE telefono_sucursal ADD CONSTRAINT fk_id_sucursal2 FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal) ON DELETE CASCADE;
 
