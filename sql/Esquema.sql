@@ -166,6 +166,12 @@ CREATE TABLE sucursal (
     
 );
 
+CREATE TABLE empleado_sucursal (
+    id_sucursal INTEGER,
+    curp VARCHAR(25) NOT NULL
+    
+);
+
 CREATE TABLE gerencia_sucursal (
     id_sucursal INTEGER,
     curp VARCHAR(25) NOT NULL
