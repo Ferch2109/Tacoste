@@ -14,28 +14,33 @@ public class HtmlReportGenerator {
                 "<html>\n" +
                 "<head>\n" +
                 "    <title>Reporte</title>\n" +
-                "    <link rel=\"stylesheet\" type=\"text/css\" href=\"reporte.css\">\n" +
-                "    <!--<<script type=\"conic-gradient.js\"></script>-->\n" +
-                "    <script src=\"pdf.js\"></script>\n" +
-                "       <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js\"></script> \n" +
-                "       <script type=\"text/javascript\" src=\"html2canvas.js\"></script>\n" +
-                "       <script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-2.1.3.js\"></script>\n" +
+                "    <link rel='stylesheet' type='text/css' href='reporte.css' media='screen'>\n" +
+                "    <link rel='stylesheet' type='text/css' href='print.css' media = 'print'>\n" +
+                "    <!--<<script type='conic-gradient.js'></script>-->\n" +
+                "    <script type='text/javascript' src='pdf.js'></script>\n" +
+                "    \n" +
+                "       <script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js'></script> \n" +
+                "       <script type='text/javascript' src='html2canvas.js'></script>\n" +
+                "       <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.3.js'></script>\n" +
                 "</head>\n" +
                 "<body>\n" +
-                "    <div style='margin-bottom: -35px'><button onclick=\"descargar()\">Descargar</button></div>\n" +
-                "    <div class = \"titulo\">\n" +
-                "        <div>\n" +
-                "            <h1>Reporte</h1>\n" +
-                "            <h2>Tacoste, SA. tacoste@gmail.com</h2>\n" +
-                "        </div>\n" +
-                "        <div><img src='tacoste.png'></div>\n" +
-                "    </div>");
+                "    <div id='imprime'>\n" +
+                "\t    <div class = 'titulo'>\n" +
+                "\t        <div>\n" +
+                "\t            <h1>Reporte</h1>\n" +
+                "\t            <h2>Tacoste, SA. tacoste@gmail.com</h2>\n" +
+                "\t        </div>\n" +
+                "\t        <div><img src='tacoste.png'></div>\n" +
+                "\t    </div>");
 
         for (QueryPair queryPair : queryPairs) {
             builder.append(createSectionForReport(queryPair));
         }
 
-        builder.append("</body><footer><h2>Tacoste, SA. || tacoste@gmail.com || www.tacoste.com.mx</h2></footer></html>");
+        builder.append("</div>\n" +
+                "</body>\n" +
+                "<footer><h2>Tacoste, SA. || tacoste@gmail.com || www.tacoste.com.mx</h2></footer>\n" +
+                "</html>");
         return builder.toString();
     }
 
