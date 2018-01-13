@@ -16,8 +16,11 @@ public class QueryPair {
                                     "              natural join (select id_comensal,count(id_comensal) as veces_consumo " +
                                     "              from consumir group by id_comensal " +
                                     "having count(id_comensal) = (select max(count(id_comensal)) from consumir group by id_comensal)))"),
-                    new QueryPair("Información Sucursal 2",
-                            "select * from informacion_sucursal"),
+                    new QueryPair("Salsa más vendida (Nombre salsa,precio, numero de ventas)",
+                            "select salsa as nombre,nivel_picor,numero_ventas,precio " +
+                                    "from (select id_producto,nombre as salsa,numero_ventas,nivel_picor from (select id_producto,sum(cantidad) as numero_ventas from contener group by id_producto) " +
+                                    "natural join salsa) " +
+                                    "natural join producto;"),
                     new QueryPair("Información Sucursal 3",
                             "select * from informacion_sucursal"));
 

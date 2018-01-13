@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6ab8bf5-ea54-44ef-8717-68680f0e9ab0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/fbd/html/HtmlReportGenerator.java" afterPath="$PROJECT_DIR$/src/fbd/html/HtmlReportGenerator.java" />
       <change beforePath="$PROJECT_DIR$/src/fbd/html/QueryPair.java" afterPath="$PROJECT_DIR$/src/fbd/html/QueryPair.java" />
-      <change beforePath="$PROJECT_DIR$/../sql/Disparadores.sql" afterPath="$PROJECT_DIR$/../sql/Disparadores.sql" />
+      <change beforePath="$PROJECT_DIR$/../sql/Inserts.sql" afterPath="$PROJECT_DIR$/../sql/Inserts.sql" />
       <change beforePath="$PROJECT_DIR$/../sql/consultasT.sql" afterPath="$PROJECT_DIR$/../sql/consultasT.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -113,8 +111,8 @@
       <file leaf-file-name="QueryPair.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/fbd/html/QueryPair.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="129" lean-forward="true" selection-start-line="17" selection-start-column="129" selection-end-line="17" selection-end-column="129" />
+            <state relative-caret-position="508">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -807,8 +805,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fbd/html/QueryPair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="129" lean-forward="true" selection-start-line="17" selection-start-column="129" selection-end-line="17" selection-end-column="129" />
+        <state relative-caret-position="508">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
